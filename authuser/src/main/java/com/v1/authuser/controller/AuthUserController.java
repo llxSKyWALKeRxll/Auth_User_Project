@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
+/**
+ * Entry point for APIs, contains user related APIs.
+ *
+ * @author Vansh Pratap Singh
+ */
 @RestController
 @RequestMapping(value = "/user/v1")
 public class AuthUserController {
@@ -21,6 +26,13 @@ public class AuthUserController {
     @Autowired
     private AuthUserService authUserService;
 
+    /**
+     * API to create/register a user.
+     *
+     * @param createUserDto                     Request object.
+     * @return                                  Response object.
+     * @throws InvalidRequestException          In case of validation failures.
+     */
     @PostMapping()
     public ResponseEntity<?> createUser(
             @Valid @RequestBody CreateUserDto createUserDto
@@ -31,6 +43,13 @@ public class AuthUserController {
 
     }
 
+    /**
+     * API to login a user.
+     *
+     * @param loginUserDto                      Request object.
+     * @return                                  Response object.
+     * @throws InvalidRequestException          In case of validation failures.
+     */
     @PostMapping(value = "/login")
     public ResponseEntity<?> loginUser(
             @Valid @RequestBody LoginUserDto loginUserDto
